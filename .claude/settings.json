@@ -1,5 +1,5 @@
 {
-	"enabledMcpjsonServers": [],
+	"enabledMcpjsonServers": ["auto-suggest"],
 	"hooks": {
 		"UserPromptSubmit": [
 			{
@@ -7,8 +7,8 @@
 					{
 						"type": "mcp_tool",
 						"server": "auto-suggest",
-						"tool": "echo",
-						"input": { "input": "${prompt}" },
+						"tool": "recommend_skills",
+						"input": { "prompt": "${prompt}" },
 						"timeout": 30
 					}
 				]
