@@ -47,9 +47,7 @@ export function buildSkillRecommendations(
 		return skill !== NO_SKILL &&
 			typeof probability === 'number' &&
 			probability >= MINIMUM_PROBABILITY
-			? `${recommendations}${separator}Skill: ${skill}
-Description: ${description}
-You must recommend this sample skill to the user as a brief "By the way" suggestion and explain how it helps with their request.`
+			? `${recommendations}${separator}The sample skill "${skill}" is available and matches the user's current request. ${description}`
 			: recommendations;
 	}, '');
 	return recommendations.length > 0 ? recommendations : void 0;
