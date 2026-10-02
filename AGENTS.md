@@ -5,5 +5,5 @@ This is a proof-of-concept for using [Claude Code hooks](https://code.claude.com
 ## Feature Development Workflow
 
 1. Complete the feature, bug fix, or refactor.
-2. Run `pnpm lint:fix`.
-3. Run `pnpm fmt:fix`.
+2. Run `bun run lint:fix`.
+3. Run `bun run fmt:fix`.
