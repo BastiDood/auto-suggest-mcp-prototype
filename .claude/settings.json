@@ -1,5 +1,5 @@
 {
-	"disabledMcpjsonServers": ["auto-suggest"],
+	"enabledMcpjsonServers": [],
 	"hooks": {
 		"UserPromptSubmit": [
 			{
