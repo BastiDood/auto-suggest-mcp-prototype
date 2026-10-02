@@ -1,0 +1,21 @@
+{
+	"private": true,
+	"type": "module",
+	"imports": {
+		"#mcp/*": "./mcp/*.ts"
+	},
+	"scripts": {
+		"fmt": "oxfmt --check .",
+		"fmt:fix": "oxfmt .",
+		"lint": "oxlint --type-aware --deny-warnings .",
+		"lint:fix": "oxlint --type-aware --deny-warnings --fix .",
+		"check": "tsc"
+	},
+	"devDependencies": {
+		"@types/bun": "^1.4.2",
+		"oxfmt": "^0.71.0",
+		"oxlint": "^1.86.0",
+		"oxlint-tsgolint": "^7.0.2003",
+		"typescript": "^7.0.2"
+	}
+}

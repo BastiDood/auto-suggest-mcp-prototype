@@ -1,0 +1,7 @@
+telemetry = false
+
+[install]
+auto = "disable"
+frozenLockfile = true
+ignoreScripts = true
+minimumReleaseAge = 86400

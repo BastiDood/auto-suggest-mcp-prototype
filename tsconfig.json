@@ -1,0 +1,25 @@
+{
+	"include": ["mcp/**/*.ts"],
+	"compilerOptions": {
+		"target": "esnext",
+		"lib": ["ESNext"],
+		"moduleDetection": "force",
+		"verbatimModuleSyntax": true,
+		"strict": true,
+		"allowUnreachableCode": false,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitOverride": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noUncheckedSideEffectImports": true,
+		"module": "preserve",
+		"noEmit": true,
+		"types": ["bun"],
+		"exactOptionalPropertyTypes": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"allowUnusedLabels": false,
+		"allowImportingTsExtensions": true,
+		"skipLibCheck": true
+	}
+}
