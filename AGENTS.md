@@ -1,6 +1,6 @@
 # Auto-Suggest MCP Prototype
 
-This is a proof-of-concept for using [Claude Code hooks](https://code.claude.com/docs/en/hooks.md) or [Codex hooks](https://learn.chatgpt.com/docs/hooks.md) to inject auto-suggested context into the harness. Examples include suggestions for agent skills, related content, notable documentation, and even random tips.
+This is a proof-of-concept for using [Claude Code hooks](https://code.claude.com/docs/en/hooks.md) to inject auto-suggested context into the harness. Examples include suggestions for agent skills, related content, notable documentation, and even random tips.
 
 ## Feature Development Workflow
 

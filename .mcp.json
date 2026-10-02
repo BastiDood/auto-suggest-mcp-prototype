@@ -1,0 +1,9 @@
+{
+	"mcpServers": {
+		"auto-suggest": {
+			"type": "stdio",
+			"command": "bun",
+			"args": ["run", "mcp"]
+		}
+	}
+}

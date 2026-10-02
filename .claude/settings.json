@@ -1,0 +1,18 @@
+{
+	"disabledMcpjsonServers": ["auto-suggest"],
+	"hooks": {
+		"UserPromptSubmit": [
+			{
+				"hooks": [
+					{
+						"type": "mcp_tool",
+						"server": "auto-suggest",
+						"tool": "echo",
+						"input": { "input": "${prompt}" },
+						"timeout": 30
+					}
+				]
+			}
+		]
+	}
+}
