@@ -3,25 +3,21 @@ import type { TypeSafeClient } from '@typesafe-ai/sdk';
 import { toStandardJsonSchema } from '@valibot/to-json-schema';
 import * as v from 'valibot';
 
-import { buildSkillRecommendations, SKILL_CHOICE } from './recommendation';
+import { recommendSkill } from './recommendation';
 
 export function initRecommendSkillsTool(server: McpServer, client: TypeSafeClient) {
 	return server.registerTool(
 		'recommend_skills',
 		{
-			description: 'Suggest relevant sample law-firm agent skills for the submitted prompt.',
+			description:
+				'Suggest sample law-firm agent skills available for download from the company GitHub marketplace, separate from skills installed in the current harness.',
 			inputSchema: toStandardJsonSchema(v.strictObject({ prompt: v.string() })),
 		},
 		async ({ prompt }, { mcpReq: { signal } }) => {
-			const { answers } = await client.systemOne(
-				{ state: { prompt }, questions: { skill: SKILL_CHOICE } },
-				{ signal, timeout: 10_000, retry: { maxRetries: 0 } },
-			);
-
-			const recommendations = buildSkillRecommendations(answers.skill);
+			const recommendation = await recommendSkill(client, prompt, signal);
 			return {
 				content:
-					typeof recommendations === 'string' ? [{ type: 'text', text: recommendations }] : [],
+					typeof recommendation === 'undefined' ? [] : [{ type: 'text', text: recommendation }],
 			};
 		},
 	);
