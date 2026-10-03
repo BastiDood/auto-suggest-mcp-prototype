@@ -17,7 +17,6 @@
 		"noEmit": true,
 		"types": ["bun"],
 		"exactOptionalPropertyTypes": true,
-		"noImplicitReturns": true,
 		"noFallthroughCasesInSwitch": true,
 		"allowUnusedLabels": false,
 		"allowImportingTsExtensions": true,

@@ -40,15 +40,17 @@ export const SKILL_CHOICE = choice(
 export function buildSkillRecommendations(
 	answer: Pick<ChoiceResponse, 'choice' | 'probabilities'>,
 ) {
-	const candidates = answer.choice === NO_SKILL ? [] : Object.entries(SKILL_CHOICE.criteria);
-	const recommendations = candidates.reduce((recommendations, [skill, description]) => {
-		const probability = answer.probabilities[skill];
-		const separator = recommendations.length > 0 ? '\n\n' : '';
-		return skill !== NO_SKILL &&
-			typeof probability === 'number' &&
-			probability >= MINIMUM_PROBABILITY
-			? `${recommendations}${separator}The sample skill "${skill}" is available and matches the user's current request. ${description}`
-			: recommendations;
-	}, '');
-	return recommendations.length > 0 ? recommendations : void 0;
+	if (answer.choice !== NO_SKILL) {
+		const probability = answer.probabilities[answer.choice];
+		const description = Object.keys(SKILL_CHOICE.criteria).find(
+			(skill) => skill === answer.choice,
+		)?.[1];
+		if (
+			typeof probability !== 'undefined' &&
+			probability >= MINIMUM_PROBABILITY &&
+			typeof description !== 'undefined'
+		) {
+			return `The sample agent skill "${answer.choice}" is available for download from the company GitHub marketplace. It is an external marketplace listing, not a skill installed or loaded in the current harness. Download and installation are required before use. It can be suggested as an optional download when relevant to the user's request.\n\n<skill_description>\n\n${description}\n\n</skill_description>`;
+		}
+	}
 }
