@@ -39,7 +39,9 @@ const SKILL_CHOICE = choice(
 
 export async function recommendSkill(client: TypeSafeClient, prompt: string, signal: AbortSignal) {
 	const {
-		answers: { skill: { choice, confidence } },
+		answers: {
+			skill: { choice, confidence },
+		},
 	} = await client.systemOne(
 		{ state: { prompt }, questions: { skill: SKILL_CHOICE } },
 		{ signal, timeout: 10_000, retry: { maxRetries: 0 } },

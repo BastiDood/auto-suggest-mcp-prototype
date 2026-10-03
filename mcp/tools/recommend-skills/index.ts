@@ -14,10 +14,22 @@ export function initRecommendSkillsTool(server: McpServer, client: TypeSafeClien
 			inputSchema: toStandardJsonSchema(v.strictObject({ prompt: v.string() })),
 		},
 		async ({ prompt }, { mcpReq: { signal } }) => {
-			const recommendation = await recommendSkill(client, prompt, signal);
+			const additionalContext = await recommendSkill(client, prompt, signal);
 			return {
 				content:
-					typeof recommendation === 'undefined' ? [] : [{ type: 'text', text: recommendation }],
+					typeof additionalContext === 'undefined'
+						? []
+						: [
+								{
+									type: 'text',
+									text: JSON.stringify({
+										hookSpecificOutput: {
+											hookEventName: 'UserPromptSubmit',
+											additionalContext,
+										},
+									}),
+								},
+							],
 			};
 		},
 	);
